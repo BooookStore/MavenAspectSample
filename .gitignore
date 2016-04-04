@@ -1,0 +1,11 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+target
+
+# OS
+*.swp
