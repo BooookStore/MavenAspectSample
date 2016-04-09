@@ -8,9 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
 /**
- * Hello world!
- *
+* Hello world!
+*
  */
 public class App extends Application
 {
@@ -20,6 +23,7 @@ public class App extends Application
 	 */
 	public static void main( String[] args )
 	{
+		Logger.getGlobal().log(Level.INFO, "Lunch JavaFX and AspectJ Application.");
 		launch(args);
 	}
 
@@ -29,7 +33,7 @@ public class App extends Application
 	 */
 	@Override
 	public void start(Stage primaryStage){
-		primaryStage.setTitle("Hello,World");
+		
 		Button btn = new Button();
 		btn.setText("Say,Hello World");
 		btn.setOnAction(e -> {
@@ -39,6 +43,7 @@ public class App extends Application
 		StackPane root = new StackPane();
 		root.getChildren().add(btn);
 
+		primaryStage.setTitle("Hello,World");
 		primaryStage.setScene(new Scene(root, 300, 250));
 		primaryStage.show();
 	}
