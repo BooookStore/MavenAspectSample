@@ -30,7 +30,7 @@ public class PersonTest {
         
         //セットアップ
         PhoneNumber pn = new PhoneNumber("111222333");
-        Person p = new Person("Book", "Store", 22, pn);
+        Person p = new Person.PersonBuilder("Book", "Store").setAge(22).setPhoneNumber(pn).build();
         
         //検証
         Assert.assertEquals("Book", p.getFirstName());
