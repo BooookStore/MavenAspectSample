@@ -32,20 +32,23 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        //サンプルコントテキストを作成
         initializeContext();
 
+        //コントローラー作成
         TopviewController tc = new TopviewController(personList);
 
+        //メインビューをロード
         Pane root = null;
         FXMLLoader loader = new FXMLLoader(App.class.getResource("./fxml/topview.fxml"));
         loader.setController(tc);
-
         try {
             root = loader.load();
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        //メインビューを表示
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
