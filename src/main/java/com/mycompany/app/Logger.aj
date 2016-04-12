@@ -1,11 +1,9 @@
 import com.mycompany.app.*;
 
+import javafx.fxml.FXMLLoader;
+import java.io.IOException;
+import com.mycompany.app.App;
+
 aspect Logger {
-
-	pointcut helloAspect() : call(void App.HelloAspect());
-
-	after(): helloAspect() {
-		System.out.println("WORLD");
-	}
 
 }
