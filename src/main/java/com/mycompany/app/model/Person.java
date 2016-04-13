@@ -1,5 +1,12 @@
 package com.mycompany.app.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * 人物の情報を表します。
  * 名前を表している_firstNameと_lastNameの二つのフィールドはnullが許可されません。
@@ -8,13 +15,13 @@ package com.mycompany.app.model;
  */
 public class Person {
  
-    private String _firstName;
+    private StringProperty _firstName;
     
-    private String _lastName;
+    private StringProperty _lastName;
     
-    private Integer _age;
+    private IntegerProperty _age;
 
-    private PhoneNumber _phoneNumber;
+    private ObjectProperty<PhoneNumber> _phoneNumber;
 
     /**
      * 各フィールドを指定された値で初期化します。
@@ -25,44 +32,64 @@ public class Person {
      * @param _phoneNumber 
      */
     private Person(PersonBuilder pb){
-        _firstName = pb.firstName;
-        _lastName = pb.lastName;
-        _age = pb.age;
-        _phoneNumber = pb.phoneNumber;
+        _firstName = new SimpleStringProperty(pb.firstName);
+        _lastName = new SimpleStringProperty(pb.lastName);
+        _age = new SimpleIntegerProperty(pb.age);        
+        _phoneNumber = new SimpleObjectProperty<>(pb.phoneNumber);
     }
 
-    public String getFirstName() {
+    //_firstNameへの取得、設定メソッド
+    public String getFirstName(){
+        return _firstName.get();
+    }
+    
+    public void setFirstName(String value){
+        _firstName.set(value);
+    }
+    
+    public StringProperty getFirstNameProperty(){
         return _firstName;
     }
-
-    public void setFirstName(String _firstName) {
-        this._firstName = _firstName;
+    
+    //_lastNameへの取得、設定メソッド
+    public String getLastName(){
+        return _lastName.get();
     }
-
-    public String getLstName() {
+    
+    public void setLastName(String value){
+        _lastName.set(value);
+    }
+    
+    public StringProperty getLastNameProperty(){
         return _lastName;
     }
-
-    public void setLstName(String _lstName) {
-        this._lastName = _lstName;
+    
+    //_ageへの取得、設定メソッド
+    public Integer getAge(){
+        return _age.get();
     }
-
-    public Integer getAge() {
+    
+    public void setAge(Integer value){
+        _age.set(value);
+    }
+    
+    public IntegerProperty getAgeProperty(){
         return _age;
     }
-
-    public void setAge(Integer _age) {
-        this._age = _age;
+    
+    //_phoneNumberへの取得、設定メソッド
+    public PhoneNumber getPhoneNumber(){
+        return _phoneNumber.get();
     }
-
-    public PhoneNumber getPhoneNumber() {
+    
+    public void setPhoneNumber(PhoneNumber phoneNumber){
+        _phoneNumber.set(phoneNumber);
+    }
+    
+    public ObjectProperty<PhoneNumber> getPhoneNumberProperty(){
         return _phoneNumber;
     }
 
-    public void setPhoneNumber(PhoneNumber _phoneNumber) {
-        this._phoneNumber = _phoneNumber;
-    }
-    
     public static class PersonBuilder {
         
         private String firstName = "None Name";

@@ -80,7 +80,7 @@ public class TopviewController implements Initializable {
         public void updateItem(Person item, boolean empty) {
             super.updateItem(item, empty);
             if (item != null) {
-                Label label = new Label(item.getFirstName() + " " + item.getLstName());
+                Label label = new Label(item.getFirstName() + " " + item.getLastName());
                 setGraphic(label);
             }
         }
