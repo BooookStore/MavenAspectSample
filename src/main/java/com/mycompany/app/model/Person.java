@@ -22,6 +22,10 @@ public class Person {
     private IntegerProperty _age;
 
     private ObjectProperty<PhoneNumber> _phoneNumber;
+    
+    private StringProperty _emailAddress;
+    
+    private StringProperty _address;
 
     /**
      * 各フィールドを指定された値で初期化します。
@@ -36,6 +40,8 @@ public class Person {
         _lastName = new SimpleStringProperty(pb.lastName);
         _age = new SimpleIntegerProperty(pb.age);        
         _phoneNumber = new SimpleObjectProperty<>(pb.phoneNumber);
+        _emailAddress = new SimpleStringProperty(pb.emailAddress);
+        _address = new SimpleStringProperty(pb.address);
     }
 
     //_firstNameへの取得、設定メソッド
@@ -90,12 +96,40 @@ public class Person {
         return _phoneNumber;
     }
 
+    //_emailAddressへの取得、設定メソッド
+    public String getEmailAddress(){
+        return _emailAddress.get();
+    }
+    
+    public void setEmailAddress(String address){
+        _emailAddress.set(address);
+    }
+    
+    public StringProperty getEmailAddressProperty(){
+        return _emailAddress;
+    }
+    
+    //_Addressへの取得、設定メソッド
+    public String getAddress(){
+        return _address.get();
+    }
+    
+    public void setAddress(String address){
+        _address.set(address);
+    }
+    
+    public StringProperty getAddressProperty(){
+        return _address;
+    }
+    
     public static class PersonBuilder {
         
         private String firstName = "None Name";
         private String lastName = "None Name";
         private Integer age = 0;
         private PhoneNumber phoneNumber = new PhoneNumber("00000000");
+        private String emailAddress = "None address";
+        private String address = "None address";
 
         public PersonBuilder(String firstName,String lastName){
             this.firstName = firstName;
@@ -109,6 +143,16 @@ public class Person {
         
         public PersonBuilder setPhoneNumber(PhoneNumber pn){
             this.phoneNumber = pn;
+            return this;
+        }
+        
+        public PersonBuilder setEmailAddress(String emailAddress){
+            this.emailAddress = emailAddress;
+            return this;
+        }
+        
+        public PersonBuilder setAddress(String address){
+            this.address = address;
             return this;
         }
         

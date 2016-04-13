@@ -30,13 +30,16 @@ public class PersonTest {
         
         //セットアップ
         PhoneNumber pn = new PhoneNumber("111222333");
-        Person p = new Person.PersonBuilder("Book", "Store").setAge(22).setPhoneNumber(pn).build();
+        Person p = new Person.PersonBuilder("Book", "Store").setAge(22)
+                .setPhoneNumber(pn).setEmailAddress("ABC").setAddress("EFG").build();
         
         //検証
         Assert.assertEquals("Book", p.getFirstName());
-        Assert.assertEquals("Store", p.getLstName());
+        Assert.assertEquals("Store", p.getLastName());
         Assert.assertEquals((Integer)22, p.getAge());
         Assert.assertEquals(pn, p.getPhoneNumber());
+        Assert.assertEquals("ABC", p.getEmailAddress());
+        Assert.assertEquals("EFG", p.getAddress());
     }
     
 }
