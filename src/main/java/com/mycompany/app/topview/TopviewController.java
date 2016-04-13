@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -56,7 +57,12 @@ public class TopviewController implements Initializable {
 
     @FXML
     void addButtonClicked(ActionEvent event) {
-        System.out.println("remove button clicked.");
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("エラー");
+        alert.setHeaderText("未実装の機能です。");
+        alert.setContentText("この機能はまだ実装されていません。");
+        
+        alert.showAndWait();
     }
 
     @FXML
