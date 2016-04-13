@@ -3,6 +3,7 @@ package com.mycompany.app.topview;
 import com.mycompany.app.model.Person;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,9 +41,12 @@ public class TopviewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         personListView.setItems(observablePersonList);
         personListView.setCellFactory((ListView<Person> param) -> new PersonCellView());
+        personListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener.Change<? extends Person> c) -> {
+            //リストから人が選択された際に、実行。
+        });
     }
 
-    @FXML
+    @FXML   
     private Button addButton;
 
     @FXML
