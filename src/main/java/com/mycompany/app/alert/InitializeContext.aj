@@ -10,15 +10,21 @@ import com.mycompany.app.model.PhoneNumber;
 */
 privileged aspect InitializeContext {
 
-    before() : execution(void App.start(Stage)) {
-        for (int i = 0; i < 10; i++) {
-            Person e = new Person.PersonBuilder("KASUMI", "ARIMURA")
-                    .setAge(23).setPhoneNumber(new PhoneNumber("XXX-YYY-ZZZ"))
-                    .setEmailAddress("ABCDEFG@gmail.com").setAddress("GHTYYII")
-                    .setIcon(new Image("http://www.flamme.co.jp/common/profile/kasumi_arimura.jpg")).build();
-            App target = (App)thisJoinPoint.getTarget();
-            target.addPerson(e);
-        }
+    before(App app) : execution(void App.start(Stage)) && target(app) {
+        Person sample1 = new Person.PersonBuilder("有村", "架純")
+                .setAge(23).setPhoneNumber(new PhoneNumber("XXX-YYY-ZZZ"))
+                .setEmailAddress("ABCDEFG@gmail.com").setAddress("兵庫県伊丹市")
+                .setIcon(new Image("http://www.flamme.co.jp/common/profile/kasumi_arimura.jpg")).build();
+
+        Person sample2 = new Person.PersonBuilder("松崎","しげる")
+                .setAge(66).setPhoneNumber(new PhoneNumber("XXX-YYY-ZZZ"))
+                .setEmailAddress("JJJKKKLLL@gmail.com").setAddress("東京都江戸川区")
+                .setIcon(new Image("http://up.gc-img.net/post_img_web/2015/08/sLs5clTgTA2N7OO_16133.jpeg")).build();
+
+        App target = (App)thisJoinPoint.getTarget();
+
+        app.addPerson(sample1);
+        app.addPerson(sample2);
     }
 
     public void App.addPerson(Person p) {
