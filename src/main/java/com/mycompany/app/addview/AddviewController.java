@@ -83,9 +83,6 @@ public class AddviewController implements Initializable {
 
     @FXML
     void addButtonClicked(ActionEvent event) {
-        if (!checkInputField()) {
-            return;
-        }
 
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
