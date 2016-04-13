@@ -32,6 +32,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        
         //サンプルコントテキストを作成
         initializeContext();
 
