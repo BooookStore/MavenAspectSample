@@ -4,7 +4,7 @@ package com.mycompany.app.model;
  * 電話番号を表します。
  * @author honyaryousuke
  */
-class PhoneNumber {
+public class PhoneNumber {
 
     private String _phoneNumber;
 

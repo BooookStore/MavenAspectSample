@@ -1,6 +1,7 @@
 package com.mycompany.app;
 
 import com.mycompany.app.model.Person;
+import com.mycompany.app.model.PhoneNumber;
 import com.mycompany.app.topview.TopviewController;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -56,7 +57,8 @@ public class App extends Application {
 
     private void initializeContext() {
         for (int i = 0; i < 10; i++) {
-            Person e = new Person.PersonBuilder(Integer.toString(i), Integer.toString(i)).build();
+            Person e = new Person.PersonBuilder(Integer.toString(i), Integer.toString(i))
+                    .setAge(i).setPhoneNumber(new PhoneNumber(Integer.toString(i))).build();
             personList.add(e);
         }
     }

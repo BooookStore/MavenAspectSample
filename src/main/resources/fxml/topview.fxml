@@ -43,12 +43,18 @@
             <ListView fx:id="personListView" prefHeight="200.0" prefWidth="200.0" />
             <VBox spacing="20.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <ImageView fitHeight="99.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="100.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <image>
+                              <Image url="@../img/Flag_of_None.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
                         </ImageView>
                         <GridPane>
                           <columnConstraints>
@@ -94,9 +100,9 @@
                         <Label text="電話番号" />
                         <Label text="メールアドレス" GridPane.rowIndex="1" />
                         <Label text="住所" GridPane.rowIndex="2" />
-                        <Label text="Label" GridPane.columnIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="phoneNumberLabel" text="None Phone Number" GridPane.columnIndex="1" />
+                        <Label fx:id="maileAdressLabel" text="None Email Address" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="addressLabel" text="None Address" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                      <VBox.margin>
                         <Insets />

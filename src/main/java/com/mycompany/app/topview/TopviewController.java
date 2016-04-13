@@ -1,6 +1,7 @@
 package com.mycompany.app.topview;
 
 import com.mycompany.app.model.Person;
+import com.mycompany.app.model.PhoneNumber;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ListChangeListener;
@@ -48,6 +49,10 @@ public class TopviewController implements Initializable {
             String personName = selectedPerson.getFirstName() + " " + selectedPerson.getLastName();
             nameLabel.setText(personName);
             ageLabel.setText(Integer.toString(selectedPerson.getAge()));
+            phoneNumberLabel.setText(selectedPerson.getPhoneNumber().getPhoneNumber());
+            maileAdressLabel.setText("Unimplemented.");
+            addressLabel.setText("Unimplemented.");
+            
         });
     }
 
@@ -68,6 +73,15 @@ public class TopviewController implements Initializable {
     
     @FXML
     private Label ageLabel;
+    
+    @FXML
+    private Label phoneNumberLabel;
+    
+    @FXML
+    private Label maileAdressLabel;
+    
+    @FXML
+    private Label addressLabel;
 
     @FXML
     void addButtonClicked(ActionEvent event) {
