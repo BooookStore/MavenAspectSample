@@ -57,12 +57,7 @@ public class TopviewController implements Initializable {
 
     @FXML
     void addButtonClicked(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("エラー");
-        alert.setHeaderText("未実装の機能です。");
-        alert.setContentText("この機能はまだ実装されていません。");
         
-        alert.showAndWait();
     }
 
     @FXML
