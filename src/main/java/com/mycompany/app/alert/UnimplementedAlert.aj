@@ -10,7 +10,8 @@ aspect UnimplementedAlert {
     /**
     * アラートを表示するポイントカットとアドバイス。
     */
-    before() : execution(void TopviewController.*ButtonClicked(ActionEvent)) {
+    before() : execution(void TopviewController.*ButtonClicked(ActionEvent)) 
+            && !execution(void TopviewController.addButtonClicked(ActionEvent)) {
         showAndWaitAlert();
     }
 
