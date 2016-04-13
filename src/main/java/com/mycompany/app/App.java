@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -32,7 +33,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
         
         //サンプルコントテキストを作成
         initializeContext();
@@ -58,7 +58,9 @@ public class App extends Application {
     private void initializeContext() {
         for (int i = 0; i < 10; i++) {
             Person e = new Person.PersonBuilder(Integer.toString(i), Integer.toString(i))
-                    .setAge(i).setPhoneNumber(new PhoneNumber(Integer.toString(i))).build();
+                    .setAge(i).setPhoneNumber(new PhoneNumber(Integer.toString(i)))
+                    .setEmailAddress("ABCDEFG@gmail.com").setAddress("GHTYYII")
+                    .setIcon(new Image("http://www.flamme.co.jp/common/profile/kasumi_arimura.jpg")).build();
             personList.add(e);
         }
     }

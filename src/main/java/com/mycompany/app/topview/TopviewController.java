@@ -1,7 +1,6 @@
 package com.mycompany.app.topview;
 
 import com.mycompany.app.model.Person;
-import com.mycompany.app.model.PhoneNumber;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ListChangeListener;
@@ -13,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 
 /**
  * topviewのコントロールです。
@@ -45,18 +45,18 @@ public class TopviewController implements Initializable {
         personListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener.Change<? extends Person> c) -> {
             //リストから人が選択された際に、実行。
             Person selectedPerson = c.getList().get(0);
-            
+
             String personName = selectedPerson.getFirstName() + " " + selectedPerson.getLastName();
             nameLabel.setText(personName);
             ageLabel.setText(Integer.toString(selectedPerson.getAge()));
             phoneNumberLabel.setText(selectedPerson.getPhoneNumber().getPhoneNumber());
-            maileAdressLabel.setText("Unimplemented.");
-            addressLabel.setText("Unimplemented.");
-            
+            maileAdressLabel.setText(selectedPerson.getEmailAddress());
+            addressLabel.setText(selectedPerson.getAddress());
+            personIconView.setImage(selectedPerson.getIcon());
         });
     }
 
-    @FXML   
+    @FXML
     private Button addButton;
 
     @FXML
@@ -67,21 +67,24 @@ public class TopviewController implements Initializable {
 
     @FXML
     private ListView<Person> personListView;
-    
+
     @FXML
     private Label nameLabel;
-    
+
     @FXML
     private Label ageLabel;
-    
+
     @FXML
     private Label phoneNumberLabel;
-    
+
     @FXML
     private Label maileAdressLabel;
-    
+
     @FXML
     private Label addressLabel;
+
+    @FXML
+    private ImageView personIconView;
 
     @FXML
     void addButtonClicked(ActionEvent event) {
@@ -94,10 +97,10 @@ public class TopviewController implements Initializable {
     @FXML
     void saveButtonClicked(ActionEvent event) {
     }
-    
+
     @FXML
     void modifyButtonClicked(ActionEvent event) {
-        
+
     }
 
     /**

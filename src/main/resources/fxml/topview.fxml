@@ -45,7 +45,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <ImageView fitHeight="100.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="personIconView" fitHeight="100.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

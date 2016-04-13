@@ -1,11 +1,13 @@
 package com.mycompany.app.model;
 
+import com.mycompany.app.App;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
 
 /**
  * 人物の情報を表します。
@@ -26,6 +28,8 @@ public class Person {
     private StringProperty _emailAddress;
     
     private StringProperty _address;
+    
+    private ObjectProperty<Image> _icon;
 
     /**
      * 各フィールドを指定された値で初期化します。
@@ -42,6 +46,7 @@ public class Person {
         _phoneNumber = new SimpleObjectProperty<>(pb.phoneNumber);
         _emailAddress = new SimpleStringProperty(pb.emailAddress);
         _address = new SimpleStringProperty(pb.address);
+        _icon = new SimpleObjectProperty<>(pb.icon);
     }
 
     //_firstNameへの取得、設定メソッド
@@ -122,6 +127,19 @@ public class Person {
         return _address;
     }
     
+    //_iconへの取得、設定メソッド
+    public Image getIcon(){
+        return _icon.get();
+    }
+    
+    public void setIcon(Image address){
+        _icon.set(address);
+    }
+    
+    public ObjectProperty<Image> getIconProperty(){
+        return _icon;
+    }
+    
     public static class PersonBuilder {
         
         private String firstName = "None Name";
@@ -130,7 +148,8 @@ public class Person {
         private PhoneNumber phoneNumber = new PhoneNumber("00000000");
         private String emailAddress = "None address";
         private String address = "None address";
-
+        private Image icon = new Image(App.class.getResource("./img/Flag_of_None.png").toString());
+        
         public PersonBuilder(String firstName,String lastName){
             this.firstName = firstName;
             this.lastName = lastName;
@@ -153,6 +172,11 @@ public class Person {
         
         public PersonBuilder setAddress(String address){
             this.address = address;
+            return this;
+        }
+        
+        public PersonBuilder setIcon(Image icon){
+            this.icon = icon;
             return this;
         }
         
