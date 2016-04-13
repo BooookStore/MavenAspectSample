@@ -2,12 +2,21 @@ import com.mycompany.app.topview.TopviewController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
+/**
+* 未実装のボタンがクリックされた場合、アラートを表示します。
+*/
 aspect UnimplementedAlert {
 
-    before() : execution(void TopviewController.addButtonClicked(ActionEvent)) {
+    /**
+    * アラートを表示するポイントカットとアドバイス。
+    */
+    before() : execution(void TopviewController.*ButtonClicked(ActionEvent)) {
         showAndWaitAlert();
     }
 
+    /**
+    * アラートを表示。
+    */
     public void showAndWaitAlert(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("エラー");

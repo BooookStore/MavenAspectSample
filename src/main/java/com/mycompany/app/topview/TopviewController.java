@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -57,17 +56,14 @@ public class TopviewController implements Initializable {
 
     @FXML
     void addButtonClicked(ActionEvent event) {
-        
     }
 
     @FXML
     void removeButtonClicked(ActionEvent event) {
-        System.out.println("remove button clicked.");
     }
 
     @FXML
     void saveButtonClicked(ActionEvent event) {
-        System.out.println("save button clicked.");
     }
 
     /**
