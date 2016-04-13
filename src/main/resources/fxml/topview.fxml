@@ -62,8 +62,8 @@
                            <children>
                               <Label text="名前" />
                               <Label text="年齢" GridPane.rowIndex="1" />
-                              <Label text="Label" GridPane.columnIndex="1" />
-                              <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="nameLabel" text="None Name" GridPane.columnIndex="1" />
+                              <Label fx:id="ageLabel" text="None Age" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                            <HBox.margin>
                               <Insets />

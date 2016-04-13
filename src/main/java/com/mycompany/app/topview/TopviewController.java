@@ -43,6 +43,11 @@ public class TopviewController implements Initializable {
         personListView.setCellFactory((ListView<Person> param) -> new PersonCellView());
         personListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener.Change<? extends Person> c) -> {
             //リストから人が選択された際に、実行。
+            Person selectedPerson = c.getList().get(0);
+            
+            String personName = selectedPerson.getFirstName() + " " + selectedPerson.getLastName();
+            nameLabel.setText(personName);
+            ageLabel.setText(Integer.toString(selectedPerson.getAge()));
         });
     }
 
@@ -57,6 +62,12 @@ public class TopviewController implements Initializable {
 
     @FXML
     private ListView<Person> personListView;
+    
+    @FXML
+    private Label nameLabel;
+    
+    @FXML
+    private Label ageLabel;
 
     @FXML
     void addButtonClicked(ActionEvent event) {
