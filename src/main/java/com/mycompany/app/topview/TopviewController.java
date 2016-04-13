@@ -61,6 +61,7 @@ public class TopviewController implements Initializable {
             addressLabel.setText(selectedPerson.getAddress());
             personIconView.setImage(selectedPerson.getIcon());
         });
+        personListView.getSelectionModel().select(0);
     }
 
     @FXML
@@ -98,7 +99,7 @@ public class TopviewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("./fxml/addview.fxml"));
         loader.setController(new AddviewController(observablePersonList));
         Pane root = loader.load();
-        
+
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();

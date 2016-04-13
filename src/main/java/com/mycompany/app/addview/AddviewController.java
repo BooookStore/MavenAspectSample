@@ -4,13 +4,11 @@ import com.mycompany.app.model.Person;
 import com.mycompany.app.model.PhoneNumber;
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -82,8 +80,13 @@ public class AddviewController implements Initializable {
     private TextField addressField;
 
     @FXML
-    void addButtonClicked(ActionEvent event) {
+    void cancelButtonClicked(ActionEvent event) {
+        firstNameField.getScene().getWindow().hide();
+    }
 
+    @FXML
+    void addButtonClicked(ActionEvent event) {
+        //各フィールドから値を取得
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
         Integer age = Integer.getInteger(ageField.getText());
@@ -92,35 +95,13 @@ public class AddviewController implements Initializable {
         String address = addressField.getText();
         Image icon = iconImageView.getImage();
 
+        //入力値からPersonを作成
         Person p = new Person.PersonBuilder(firstName, lastName).setAddress(address)
                 .setAge(age).setEmailAddress(emailAddress).setIcon(icon).setPhoneNumber(new PhoneNumber(phoneNumber))
                 .build();
 
+        //リストへ追加
         targetList.add(p);
-
-        firstNameField.getScene().getWindow().hide();
-    }
-
-    private boolean checkInputField() {
-
-        ArrayList<String> inputField = new ArrayList<>();
-        inputField.add(firstNameField.getText());
-        inputField.add(lastNameField.getText());
-
-        for (String str : inputField) {
-            if ("".equals(str)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("エラー");
-                alert.setHeaderText("名前が未入力です。");
-                alert.setContentText("名前を入力してください。");
-
-                alert.showAndWait();
-
-                return false;
-            }
-        }
-
-        return true;
     }
 
 }
