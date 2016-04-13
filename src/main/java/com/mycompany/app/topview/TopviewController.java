@@ -65,6 +65,11 @@ public class TopviewController implements Initializable {
     @FXML
     void saveButtonClicked(ActionEvent event) {
     }
+    
+    @FXML
+    void modifyButtonClicked(ActionEvent event) {
+        
+    }
 
     /**
      * PersonをpersonListViewに表示するセルを表します。
