@@ -80,7 +80,7 @@
       </GridPane>
       <HBox alignment="CENTER" prefHeight="39.0" prefWidth="347.0" spacing="30.0">
          <children>
-            <Button fx:id="addButton" mnemonicParsing="false" text="追加" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonClicked" text="追加" />
             <Button fx:id="cancelButton" mnemonicParsing="false" text="キャンセル" />
          </children>
          <VBox.margin>

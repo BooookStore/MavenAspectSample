@@ -29,29 +29,6 @@ public class AddviewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
-        addButton.setOnAction((ActionEvent event) -> {
-
-            if (!checkInputField()) {
-                return;
-            }
-
-            String firstName = firstNameField.getText();
-            String lastName = lastNameField.getText();
-            Integer age = Integer.getInteger(ageField.getText());
-            String phoneNumber = phoneNumberField.getText();
-            String emailAddress = emailAddressField.getText();
-            String address = addressField.getText();
-            Image icon = iconImageView.getImage();
-
-            Person p = new Person.PersonBuilder(firstName, lastName).setAddress(address)
-                    .setAge(age).setEmailAddress(emailAddress).setIcon(icon).setPhoneNumber(new PhoneNumber(phoneNumber))
-                    .build();
-
-            targetList.add(p);
-
-            firstNameField.getScene().getWindow().hide();
-        });
 
         iconImageView.setOnDragOver((DragEvent event) -> {
             Dragboard db = event.getDragboard();
@@ -103,6 +80,29 @@ public class AddviewController implements Initializable {
 
     @FXML
     private TextField addressField;
+
+    @FXML
+    void addButtonClicked(ActionEvent event) {
+        if (!checkInputField()) {
+            return;
+        }
+
+        String firstName = firstNameField.getText();
+        String lastName = lastNameField.getText();
+        Integer age = Integer.getInteger(ageField.getText());
+        String phoneNumber = phoneNumberField.getText();
+        String emailAddress = emailAddressField.getText();
+        String address = addressField.getText();
+        Image icon = iconImageView.getImage();
+
+        Person p = new Person.PersonBuilder(firstName, lastName).setAddress(address)
+                .setAge(age).setEmailAddress(emailAddress).setIcon(icon).setPhoneNumber(new PhoneNumber(phoneNumber))
+                .build();
+
+        targetList.add(p);
+
+        firstNameField.getScene().getWindow().hide();
+    }
 
     private boolean checkInputField() {
 
