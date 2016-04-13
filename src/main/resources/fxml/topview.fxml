@@ -56,10 +56,10 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <GridPane>
+                        <GridPane prefHeight="100.0" prefWidth="264.0">
                           <columnConstraints>
-                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="51.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="213.0" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -68,7 +68,7 @@
                            <children>
                               <Label text="名前" />
                               <Label text="年齢" GridPane.rowIndex="1" />
-                              <Label fx:id="nameLabel" text="None Name" GridPane.columnIndex="1" />
+                              <Label fx:id="nameLabel" prefHeight="17.0" prefWidth="207.0" text="None Name" GridPane.columnIndex="1" />
                               <Label fx:id="ageLabel" text="None Age" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                            <HBox.margin>

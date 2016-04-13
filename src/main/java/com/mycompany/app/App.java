@@ -1,7 +1,6 @@
 package com.mycompany.app;
 
 import com.mycompany.app.model.Person;
-import com.mycompany.app.model.PhoneNumber;
 import com.mycompany.app.topview.TopviewController;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -11,9 +10,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * Hello world!
@@ -33,9 +32,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        
-        //サンプルコントテキストを作成
-        initializeContext();
 
         //コントローラー作成
         TopviewController tc = new TopviewController(personList);
@@ -50,19 +46,17 @@ public class App extends Application {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        //メインビューを表示
+        //終了処理
+        primaryStage.setOnCloseRequest((WindowEvent event) -> {
+            closeProccess(event);
+        });
+
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
     }
 
-    private void initializeContext() {
-        for (int i = 0; i < 10; i++) {
-            Person e = new Person.PersonBuilder(Integer.toString(i), Integer.toString(i))
-                    .setAge(i).setPhoneNumber(new PhoneNumber(Integer.toString(i)))
-                    .setEmailAddress("ABCDEFG@gmail.com").setAddress("GHTYYII")
-                    .setIcon(new Image("http://www.flamme.co.jp/common/profile/kasumi_arimura.jpg")).build();
-            personList.add(e);
-        }
+    private void closeProccess(WindowEvent event) {
+        System.out.println("Close Proccess.");
     }
-
 }
