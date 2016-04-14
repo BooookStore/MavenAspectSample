@@ -2,7 +2,6 @@ package com.mycompany.app.addview;
 
 import com.mycompany.app.model.Person;
 import com.mycompany.app.model.PhoneNumber;
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -37,19 +36,7 @@ public class AddviewController implements Initializable {
             }
         });
 
-        iconImageView.setOnDragDropped((DragEvent event) -> {
-            Dragboard db = event.getDragboard();
-            boolean success = false;
-            if (db.hasFiles()) {
-                success = true;
-                String filePath = null;
-                for (File file : db.getFiles()) {
-                    iconImageView.setImage(new Image(file.toURI().toString()));
-                }
-            }
-            event.setDropCompleted(success);
-            event.consume();
-        });
+        iconImageView.setOnDragDropped(new LoadDragImage(iconImageView));
     }
 
     @FXML
