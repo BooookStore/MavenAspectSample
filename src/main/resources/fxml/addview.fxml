@@ -81,7 +81,7 @@
       <HBox alignment="CENTER" prefHeight="39.0" prefWidth="347.0" spacing="30.0">
          <children>
             <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonClicked" text="追加" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" text="キャンセル" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonClicked" text="キャンセル" />
          </children>
          <VBox.margin>
             <Insets bottom="20.0" />

@@ -8,8 +8,6 @@ privileged aspect ValidateInputData {
 
     void around(AddviewController cont,ActionEvent event) : execution(void AddviewController.addButtonClicked(ActionEvent)) 
                                         && target(cont) && args(event) {
-        System.out.println("validation.");
-        
         ArrayList<String> inputField = new ArrayList<>();
         inputField.add(cont.firstNameField.getText());
         inputField.add(cont.lastNameField.getText());
@@ -28,6 +26,7 @@ privileged aspect ValidateInputData {
         }
 
         proceed(cont,event);
-    }
 
+        cont.firstNameField.getScene().getWindow().hide();
+    }
 }
