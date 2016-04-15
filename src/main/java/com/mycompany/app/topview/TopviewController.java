@@ -47,20 +47,7 @@ public class TopviewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        personListView.setItems(observablePersonList);
-        personListView.setCellFactory((ListView<Person> param) -> new PersonCellView());
-        personListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener.Change<? extends Person> c) -> {
-            //リストから人が選択された際に、実行。
-            Person selectedPerson = c.getList().get(0);
-
-            String personName = selectedPerson.getFirstName() + " " + selectedPerson.getLastName();
-            nameLabel.setText(personName);
-            ageLabel.setText(Integer.toString(selectedPerson.getAge()));
-            phoneNumberLabel.setText(selectedPerson.getPhoneNumber().getPhoneNumber());
-            maileAdressLabel.setText(selectedPerson.getEmailAddress());
-            addressLabel.setText(selectedPerson.getAddress());
-            personIconView.setImage(selectedPerson.getIcon());
-        });
+        initializePersonListView();
     }
 
     @FXML
@@ -75,6 +62,24 @@ public class TopviewController implements Initializable {
     @FXML
     private ListView<Person> personListView;
 
+    private void initializePersonListView(){
+        personListView.setItems(observablePersonList);
+        personListView.setCellFactory((ListView<Person> param) -> new PersonCellView());
+        personListView.getSelectionModel().getSelectedItems().addListener((ListChangeListener.Change<? extends Person> c) -> {
+            //リストから人が選択された際に、実行。
+            Person selectedPerson = c.getList().get(0);
+
+            String personName = selectedPerson.getFirstName() + " " + selectedPerson.getLastName();
+            nameLabel.setText(personName);
+            ageLabel.setText(Integer.toString(selectedPerson.getAge()));
+            phoneNumberLabel.setText(selectedPerson.getPhoneNumber().getPhoneNumber());
+            maileAdressLabel.setText(selectedPerson.getEmailAddress());
+            addressLabel.setText(selectedPerson.getAddress());
+            personIconView.setImage(selectedPerson.getIcon());
+        });
+        personListView.getSelectionModel().select(0);
+    }
+    
     @FXML
     private Label nameLabel;
 

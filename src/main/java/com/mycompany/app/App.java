@@ -10,7 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -24,11 +23,12 @@ public class App extends Application {
     /**
      * アプリケーションが持つ人々のデータです。
      */
-    private ObservableList<Person> personList = FXCollections.observableArrayList();
+    private final ObservableList<Person> personList = FXCollections.observableArrayList();
 
     /**
      * アプリケーションのスタートポイント
      *
+     * @param args
      */
     public static void main(String[] args) {
         launch(args);
