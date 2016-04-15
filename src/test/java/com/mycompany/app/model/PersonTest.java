@@ -1,6 +1,5 @@
 package com.mycompany.app.model;
 
-import com.mycompany.app.App;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -68,12 +67,21 @@ public class PersonTest {
         Assert.assertEquals("ABC", p.getEmailAddress());
         Assert.assertEquals("EFG", p.getAddress());
         Assert.assertEquals(icon, p.getIcon());
-        
-        //セットアップ
-        Person p2 = new Person.PersonBuilder("First", "Last").build();
-        
-        //検証
-        Assert.assertNotNull(p2.getIcon());
     }
 
+    @Test
+    public void getter_setter_check_base() {
+
+        //セットアップ
+        Person p = new Person.PersonBuilder("A", "B").build();
+
+        //検証
+        Assert.assertEquals("A", p.getFirstName());
+        Assert.assertEquals("B", p.getLastName());
+        Assert.assertEquals((Integer) 0, p.getAge());
+        Assert.assertNotNull(p.getPhoneNumber());
+        Assert.assertEquals("None address", p.getEmailAddress());
+        Assert.assertEquals("None address", p.getAddress());
+        Assert.assertNotNull(p.getIcon());
+    }
 }

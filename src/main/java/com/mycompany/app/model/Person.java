@@ -8,6 +8,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
+import javax.validation.constraints.Min;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 人物の情報を表します。 名前を表している_firstNameと_lastNameの二つのフィールドはnullが許可されません。
@@ -16,18 +19,28 @@ import javafx.scene.image.Image;
  */
 public class Person {
 
+    @NotEmpty
+    @Min(value=0)
     private StringProperty _firstName;
 
+    @NotEmpty
+    @Min(value=0)
     private StringProperty _lastName;
 
+    @NotBlank
+    @Min(value=0)
     private IntegerProperty _age;
 
+    @NotEmpty
     private ObjectProperty<PhoneNumber> _phoneNumber;
 
+    @NotEmpty
     private StringProperty _emailAddress;
 
+    @NotEmpty
     private StringProperty _address;
 
+    @NotEmpty
     private ObjectProperty<Image> _icon;
 
     /**

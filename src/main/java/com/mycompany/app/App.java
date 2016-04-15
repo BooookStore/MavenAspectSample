@@ -21,6 +21,9 @@ import javafx.stage.WindowEvent;
  */
 public class App extends Application {
 
+    /**
+     * アプリケーションが持つ人々のデータです。
+     */
     private ObservableList<Person> personList = FXCollections.observableArrayList();
 
     /**

@@ -2,6 +2,8 @@ package com.mycompany.app.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * 電話番号を表します。
@@ -9,7 +11,9 @@ import javafx.beans.property.StringProperty;
  */
 public class PhoneNumber {
 
-    private StringProperty _phoneNumber = new SimpleStringProperty();
+    @NotBlank
+    @Length(min=0,max=100)
+    private final StringProperty _phoneNumber = new SimpleStringProperty();
 
     /**
      * コンストラクタ
