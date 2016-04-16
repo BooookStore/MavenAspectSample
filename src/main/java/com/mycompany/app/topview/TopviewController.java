@@ -3,6 +3,8 @@ package com.mycompany.app.topview;
 import com.mycompany.app.App;
 import com.mycompany.app.model.Person;
 import com.mycompany.app.addview.AddviewController;
+import com.mycompany.app.util.FXMLShow;
+import com.sun.media.jfxmedia.logging.Logger;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,16 +12,13 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * topviewのコントロールです。
@@ -28,6 +27,7 @@ import javafx.stage.Stage;
  */
 public class TopviewController implements Initializable {
 
+    @NotEmpty
     private final ObservableList<Person> observablePersonList;
 
     /**
@@ -99,14 +99,12 @@ public class TopviewController implements Initializable {
     private ImageView personIconView;
 
     @FXML
-    void addButtonClicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("./fxml/addview.fxml"));
-        loader.setController(new AddviewController(observablePersonList));
-        Pane root = loader.load();
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+    void addButtonClicked(ActionEvent event) {
+        try {
+            FXMLShow.loadAndShow(App.class.getResource("./fxml/addview.fxml"), new AddviewController(observablePersonList));
+        } catch (IllegalStateException | IOException ex) {
+            Logger.logMsg(Logger.ERROR, ex.getMessage());
+        }
     }
 
     @FXML
@@ -135,7 +133,6 @@ public class TopviewController implements Initializable {
                 setGraphic(label);
             }
         }
-
     }
 
 }
